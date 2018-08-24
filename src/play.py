@@ -1,6 +1,7 @@
 # 連続値を使わない(離散的な)強化学習
 # アクション　シチュエーション（change_view 等）も一部使っていない物あり
 # 補助的な行動考えていない
+# 2タイ２
 
 # catchgame と　train を複合させて作成している
 
@@ -151,15 +152,15 @@ class Play(player11.Player11, threading.Thread):
 
 if __name__ == "__main__":
     plays = []
-    for i in range(22):
+    for i in range(4):
         p = Play()
         plays.append(p)
         teamname = str(p.__class__.__name__)
-        if i < 11:
+        if i < 2:
             teamname += "left"
         else:
             teamname += "right"
-        plays[i].initialize((i % 11 + 1), teamname, "localhost", 6000)
+        plays[i].initialize((i % 2 + 1), teamname, "localhost", 6000)
         plays[i].start()
 
 # 状態s一覧
