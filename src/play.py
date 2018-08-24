@@ -51,7 +51,7 @@ class Play(player11.Player11, threading.Thread):
             state_t = state_t_1
             action_t = self.agent.select_action(state_t, self.agent.exploration)
             # コマンド、報酬の更新
-            self.update()
+            self.update(action_t)
             # パラメータの更新
             state_t_1, reward_t, terminal = self.observe()
 
