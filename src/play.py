@@ -113,7 +113,7 @@ class Play(player11.Player11, threading.Thread):
                 self.terminal = True
             else:
                 self.reward -= 2
-                if self.m_dBallX[self.m_iTime] < 0:
+                if self.m_dBallX< 0:
                     self.reward += 1
                 else:
                     self.reward -= 1
@@ -125,7 +125,7 @@ class Play(player11.Player11, threading.Thread):
                 self.reward += 100
             else:
                 self.reward -= 2
-                if self.m_dBallX[self.m_iTime] < 0:
+                if self.m_dBallX < 0:
                     self.reward -= 1
                 else:
                     self.reward += 1
