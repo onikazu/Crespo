@@ -87,20 +87,20 @@ class Play(player11.Player11, threading.Thread):
         # コマンドの更新
         if action == self.enable_actions[0]:
             # do nothing
-            self.m_strCommand = "(turn 0)"
+            self.m_strCommand[self.m_iTime] = "(turn 0)"
         elif action == self.enable_actions[1]:
             # turn right
-            self.m_strCommand = "(turn 60)"
+            self.m_strCommand[self.m_iTime] = "(turn 60)"
         elif action == self.enable_actions[2]:
-            self.m_strCommand = "(turn -60)"
+            self.m_strCommand[self.m_iTime] = "(turn -60)"
         elif action == self.enable_actions[3]:
-            self.m_strCommand = "(dash 100)"
+            self.m_strCommand[self.m_iTime] = "(dash 100)"
         elif action == self.enable_actions[4]:
-            self.m_strCommand = "(dash -100)"
+            self.m_strCommand[self.m_iTime] = "(dash -100)"
         elif action == self.enable_actions[5]:
-            self.m_strCommand = "(kick 100 0)"
+            self.m_strCommand[self.m_iTime] = "(kick 100 0)"
         elif action == self.enable_actions[6]:
-            self.m_strCommand = "(kick 50 0)"
+            self.m_strCommand[self.m_iTime] = "(kick 50 0)"
 
         # 報酬の更新(時間経過によるペナルティも加味)
         # 右チームの場合
@@ -113,7 +113,7 @@ class Play(player11.Player11, threading.Thread):
                 self.terminal = True
             else:
                 self.reward -= 2
-                if self.m_dBallX < 0:
+                if self.m_dBallX[self.m_iTime] < 0:
                     self.reward += 1
                 else:
                     self.reward -= 1
@@ -125,7 +125,7 @@ class Play(player11.Player11, threading.Thread):
                 self.reward += 100
             else:
                 self.reward -= 2
-                if self.m_dBallX < 0:
+                if self.m_dBallX[self.m_iTime] < 0:
                     self.reward -= 1
                 else:
                     self.reward += 1
