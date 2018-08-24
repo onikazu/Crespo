@@ -26,7 +26,6 @@ class Play(player11.Player11, threading.Thread):
         self.agent = DQNAgent(self.enable_actions, self.name)
         self.replay_memory_size = 1000
         self.train_stop_time = 6000
-        self.learning_step = 1
 
         # replay memory
         self.D = deque(maxlen=self.replay_memory_size)
