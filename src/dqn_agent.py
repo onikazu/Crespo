@@ -68,7 +68,9 @@ class DQNAgent:
 
     def Q_values(self, state):
         # Q(state, action) of all actions
-        return self.sess.run(self.y, feed_dict={self.x: [state]})[0]
+        a = self.sess.run(self.y, feed_dict={self.x: [state]})[0]
+        self.learning_step += 1
+        return a
 
     def select_action(self, state, epsilon):
         if np.random.rand() <= epsilon:

@@ -55,7 +55,6 @@ class Play(player11.Player11, threading.Thread):
             self.update(action_t)
             # パラメータの更新
             state_t_1, reward_t, terminal = self.observe()
-            self.learning_step += 1
             self.agent.store_experience(state_t, action_t, reward_t, state_t_1, terminal)
 
             self.agent.experience_replay()
