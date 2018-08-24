@@ -35,13 +35,13 @@ class DQNAgent:
 
     def init_model(self):
         # input layer (8 x 8)
-        self.x = tf.placeholder(tf.float32, [1, 6])
+        self.x = tf.placeholder(tf.float32, [self.learning_step, 6])
 
         # flatten (64)
         x_flat = tf.reshape(self.x, [-1, 6])
 
         # fully connected layer (32)
-        W_fc1 = tf.Variable(tf.truncated_normal([6, 1], stddev=0.01))
+        W_fc1 = tf.Variable(tf.truncated_normal([6, self.learning_step], stddev=0.01))
         b_fc1 = tf.Variable(tf.zeros([6]))
         h_fc1 = tf.nn.relu(tf.matmul(x_flat, W_fc1) + b_fc1)
 
