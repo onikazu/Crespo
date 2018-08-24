@@ -7,26 +7,16 @@
 
 import player11
 import threading
-from trash.dqn_agent import DQNAgent
 import numpy as np
 
-from collections import deque
 
-
-class Play(player11.Player11, threading.Thread):
+class McPlayer(player11.Player11, threading.Thread):
     def __init__(self):
-        super(Play, self).__init__()
-        self.name = "soccer"
+        super(McPlayer, self).__init__()
+        self.name = "Mc"
         self.enable_actions = (0, 1, 2, 3, 4, 5, 6)
         self.reward = 0
-        self.terminal = False
         self.screen = 0
-        self.agent = DQNAgent(self.enable_actions, self.name)
-        self.replay_memory_size = 1000
-        self.train_stop_time = 6000
-
-        # replay memory
-        self.D = deque(maxlen=self.replay_memory_size)
 
     def play_0(self):
         self.m_strCommand[self.m_iTime] = "(turn 0)"
@@ -150,7 +140,7 @@ class Play(player11.Player11, threading.Thread):
 if __name__ == "__main__":
     plays = []
     for i in range(4):
-        p = Play()
+        p = McPlayer()
         plays.append(p)
         teamname = str(p.__class__.__name__)
         if i < 2:
