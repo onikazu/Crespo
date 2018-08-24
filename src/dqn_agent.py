@@ -36,13 +36,13 @@ class DQNAgent:
     def init_model(self):
         # input layer (6次元)
         # self.x = tf.placeholder(tf.float32, [None, 8, 8])
-        self.x = tf.placeholder(tf.float32, [6])
+        self.x = tf.placeholder(tf.float32, [None, 6])
 
         # flatten (64)
         # x_flat = tf.reshape(self.x, [-1, 64])
 
         # fully connected layer (32)
-        W_fc1 = tf.Variable(tf.truncated_normal([6], stddev=0.01))
+        W_fc1 = tf.Variable(tf.truncated_normal([6,], stddev=0.01))
         b_fc1 = tf.Variable(tf.zeros([6]))
         h_fc1 = tf.nn.relu(tf.matmul(self.x, W_fc1) + b_fc1)
 
