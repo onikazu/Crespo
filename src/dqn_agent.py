@@ -23,7 +23,7 @@ class DQNAgent:
         self.exploration = 0.1
         self.model_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
         self.model_name = "{}.ckpt".format(self.environment_name)
-        self.leaning_step = 1
+        self.learning_step = 1
 
         # replay memory
         self.D = deque(maxlen=self.replay_memory_size)
