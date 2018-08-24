@@ -35,7 +35,7 @@ class DQNAgent:
 
     def init_model(self):
         # input layer (8 x 8)
-        self.x = tf.placeholder(tf.float32, [None, 1, 6])
+        self.x = tf.placeholder(tf.float32, [1, 1, 6])
 
         # flatten (64)
         x_flat = tf.reshape(self.x, [-1, 6])
