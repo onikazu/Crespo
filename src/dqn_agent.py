@@ -42,7 +42,7 @@ class DQNAgent:
         # x_flat = tf.reshape(self.x, [-1, 64])
 
         # fully connected layer (32)
-        W_fc1 = tf.Variable(tf.truncated_normal([6,], stddev=0.01))
+        W_fc1 = tf.Variable(tf.truncated_normal([6], stddev=0.01))
         b_fc1 = tf.Variable(tf.zeros([6]))
         h_fc1 = tf.nn.relu(tf.matmul(self.x, W_fc1) + b_fc1)
 
