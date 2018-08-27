@@ -27,7 +27,7 @@ class Crespo(player11.Player11, threading.Thread):
         self.max_number_of_steps = 100  # 1試行のstep数
         self.num_consecutive_iterations = 100  # 学習完了評価に使用する平均試行回数
         self.num_episodes = 2000  # 総試行回数
-        self.q_table = np.random.uniform(low=-1, high=1, size=(self.num_digitized ** 4, self.action_num))
+        self.q_table = np.random.uniform(low=-1, high=1, size=(self.num_digitized ** 5, self.action_num))
         self.total_reward_vec = np.zeros(self.num_consecutive_iterations)  # 各試行の報酬を格納
         self.final_x = np.zeros((self.num_episodes, 1))  # 学習後、各試行のt=200でのｘの位置を格納
         self.islearned = 0  # 学習が終わったフラグ
@@ -107,7 +107,7 @@ class Crespo(player11.Player11, threading.Thread):
         gamma = 0.99
         alpha = 0.5
         next_Max_Q = max(q_table[next_state][0], q_table[next_state][1], q_table[next_state][2], q_table[next_state][3],
-                         q_table[next_state][4], q_table[next_state][5])
+                         q_table[next_state][4], q_table[next_state][5], q_table[next_state][6])
         q_table[state, action] = (1 - alpha) * q_table[state, action] + \
                                  alpha * (reward + gamma * next_Max_Q)
         return q_table
@@ -170,6 +170,7 @@ if __name__ == "__main__":
 # self.m_dBallY
 #
 # 行動a一覧
+# (turn 0)
 # (turn 60)
 # (turn -60)
 # (dash 100)
