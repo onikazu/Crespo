@@ -50,7 +50,7 @@ class Crespo(player11.Player11, threading.Thread):
 
 
     def after_play(self):
-        self.m_strCommand = "(turn 0)"
+        self.m_strCommand[self.m_iTime] = "(turn 0)"
         observation = (self.m_dX, self.m_dY, self.m_dBallX, self.m_dBallY, self.m_dNeck)
         state = self.digitize_state(observation)
         print(observation[0])  # プレーヤーのxイチを出力
