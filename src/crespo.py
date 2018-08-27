@@ -150,7 +150,7 @@ if __name__ == "__main__":
         p = Crespo()
         plays.append(p)
         teamname = str(p.__class__.__name__)
-        if i < 2:
+        if i < 11:
             teamname += "left"
         else:
             teamname += "right"
