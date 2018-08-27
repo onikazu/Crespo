@@ -36,7 +36,6 @@ class Crespo(player11.Player11, threading.Thread):
 
     # 実行
     def play_0(self):
-        self.m_strCommand[self.m_iTime] = "(turn 0)"
         if self.checkInitialMode():
             if self.checkInitialMode():
                 self.setKickOffPosition()
