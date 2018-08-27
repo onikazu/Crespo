@@ -79,13 +79,13 @@ class Crespo(player11.Player11, threading.Thread):
     def digitize_state(self, observation):
         cart_pos, cart_v, pole_angle, pole_v = observation
         digitized = [
-            np.digitize(cart_pos, bins=self.bins(-52.5, 52.5, self.num_dizitized)),  # dX
-            np.digitize(cart_v, bins=self.bins(-34.0, 34.0, self.num_dizitized)),  # dY
-            np.digitize(pole_angle, bins=self.bins(-52.5, 52.5, self.num_dizitized)),  # dBallX
-            np.digitize(pole_v, bins=self.bins(-34.0, 34.0, self.num_dizitized)),  # dBallY
-            np.digitize(pole_v, bins=self.bins(-180.0, 180.0, self.num_dizitized))  # dNeck
+            np.digitize(cart_pos, bins=self.bins(-52.5, 52.5, self.num_digitized)),  # dX
+            np.digitize(cart_v, bins=self.bins(-34.0, 34.0, self.num_digitized)),  # dY
+            np.digitize(pole_angle, bins=self.bins(-52.5, 52.5, self.num_digitized)),  # dBallX
+            np.digitize(pole_v, bins=self.bins(-34.0, 34.0, self.num_digitized)),  # dBallY
+            np.digitize(pole_v, bins=self.bins(-180.0, 180.0, self.num_digitized))  # dNeck
         ]
-        return sum([x * (self.num_dizitized ** i) for i, x in enumerate(digitized)])
+        return sum([x * (self.num_digitized ** i) for i, x in enumerate(digitized)])
 
     # [2]行動a(t)を求める関数 -------------------------------------
     def get_action(self, next_state, episode):
