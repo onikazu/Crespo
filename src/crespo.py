@@ -70,7 +70,8 @@ class Crespo(player11.Player11, threading.Thread):
         self.q_table = self.update_Qtable(self.q_table, state, self.action, reward, next_state)
 
         #  次の行動a_{t+1}を求める
-        self.action = self.get_action(next_state, self.episode)  # a_{t+1}
+        episode = -(self.m_iTime // 100)
+        self.action = self.get_action(next_state, episode)  # a_{t+1}
         return self.actions[self.action]
 
 
