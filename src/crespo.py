@@ -22,6 +22,7 @@ class Crespo(player11.Player11, threading.Thread):
         self.goal_average_reward = 195  # この報酬を超えると学習終了（中心への制御なし）
         # 出力数
         self.action_num = 7
+        self.action = 0
         self.actions = ("(turn 0)", "(turn 60)", "(turn -60)", "(dash 100)", "(dash -100)", "(kick 100 0)", "(kick 50 0)")
         self.max_number_of_steps = 100  # 1試行のstep数
         self.num_consecutive_iterations = 100  # 学習完了評価に使用する平均試行回数
@@ -66,8 +67,8 @@ class Crespo(player11.Player11, threading.Thread):
         self.q_table = self.update_Qtable(self.q_table, state, self.action, self.reward, next_state)
 
         #  次の行動a_{t+1}を求める
-        action = self.get_action(next_state, self.episode)  # a_{t+1}
-        return self.actions[action]
+        self.action = self.get_action(next_state, self.episode)  # a_{t+1}
+        return self.actions[self.action]
 
 
     # [1]Q関数を離散化して定義する関数　------------
