@@ -77,13 +77,13 @@ class Crespo(player11.Player11, threading.Thread):
 
     # 各値を離散値に変換
     def digitize_state(self, observation):
-        cart_pos, cart_v, pole_angle, pole_v = observation
+        cart_pos, cart_v, pole_angle, pole_v, a = observation
         digitized = [
             np.digitize(cart_pos, bins=self.bins(-52.5, 52.5, self.num_digitized)),  # dX
             np.digitize(cart_v, bins=self.bins(-34.0, 34.0, self.num_digitized)),  # dY
             np.digitize(pole_angle, bins=self.bins(-52.5, 52.5, self.num_digitized)),  # dBallX
             np.digitize(pole_v, bins=self.bins(-34.0, 34.0, self.num_digitized)),  # dBallY
-            np.digitize(pole_v, bins=self.bins(-180.0, 180.0, self.num_digitized))  # dNeck
+            np.digitize(a, bins=self.bins(-180.0, 180.0, self.num_digitized))  # dNeck
         ]
         return sum([x * (self.num_digitized ** i) for i, x in enumerate(digitized)])
 
