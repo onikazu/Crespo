@@ -56,15 +56,18 @@ class Crespo(player11.Player11, threading.Thread):
         print(observation[0])  # プレーヤーのxイチを出力
         print(self.sum_reward)
 
+        reward = 0
         # 報酬を決定
         if observation[2] > 20.0:
-            self.sum_reward += 1
+            reward = 1
         if self.m_strPlayMode == "(goal_l)":
-            self.sum_reward += 100
+            reward = 100
+
+        self.sum_reward += reward
 
         # 離散状態s_{t+1}を求め、Q関数を更新する
         next_state = self.digitize_state(observation)  # t+1での観測状態を、離散値に変換
-        self.q_table = self.update_Qtable(self.q_table, state, self.action, self.reward, next_state)
+        self.q_table = self.update_Qtable(self.q_table, state, self.action, reward, next_state)
 
         #  次の行動a_{t+1}を求める
         self.action = self.get_action(next_state, self.episode)  # a_{t+1}
