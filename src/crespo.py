@@ -26,7 +26,7 @@ class Crespo(player11.Player11, threading.Thread):
         self.max_number_of_steps = 100  # 1試行のstep数
         self.num_consecutive_iterations = 100  # 学習完了評価に使用する平均試行回数
         self.num_episodes = 2000  # 総試行回数
-        self.q_table = np.random.uniform(low=-1, high=1, size=(self.num_dizitized ** 4, self.action_num))
+        self.q_table = np.random.uniform(low=-1, high=1, size=(self.num_digitized ** 4, self.action_num))
         self.total_reward_vec = np.zeros(self.num_consecutive_iterations)  # 各試行の報酬を格納
         self.final_x = np.zeros((self.num_episodes, 1))  # 学習後、各試行のt=200でのｘの位置を格納
         self.islearned = 0  # 学習が終わったフラグ
